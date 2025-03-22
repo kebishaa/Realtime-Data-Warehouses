@@ -1,0 +1,76 @@
+[2025-03-20T20:55:15.002+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: schema_dag.submit_schemas scheduled__2025-03-19T00:00:00+00:00 [queued]>
+[2025-03-20T20:55:15.038+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: schema_dag.submit_schemas scheduled__2025-03-19T00:00:00+00:00 [queued]>
+[2025-03-20T20:55:15.039+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2025-03-20T20:55:15.366+0000] {taskinstance.py:1380} INFO - Executing <Task(PinotSchemaSubmitOperator): submit_schemas> on 2025-03-19 00:00:00+00:00
+[2025-03-20T20:55:15.379+0000] {standard_task_runner.py:57} INFO - Started process 5519 to run task
+[2025-03-20T20:55:15.395+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'schema_dag', 'submit_schemas', 'scheduled__2025-03-19T00:00:00+00:00', '--job-id', '19', '--raw', '--subdir', 'DAGS_FOLDER/schema_dag.py', '--cfg-path', '/tmp/tmpzb7m22it']
+[2025-03-20T20:55:15.403+0000] {standard_task_runner.py:85} INFO - Job 19: Subtask submit_schemas
+[2025-03-20T20:55:15.592+0000] {task_command.py:415} INFO - Running <TaskInstance: schema_dag.submit_schemas scheduled__2025-03-19T00:00:00+00:00 [running]> on host c601b8b43588
+[2025-03-20T20:55:23.960+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='kebishaa' AIRFLOW_CTX_DAG_ID='schema_dag' AIRFLOW_CTX_TASK_ID='submit_schemas' AIRFLOW_CTX_EXECUTION_DATE='2025-03-19T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-19T00:00:00+00:00'
+[2025-03-20T20:55:24.594+0000] {pinot_schema_operator.py:32} ERROR - An error occurred: HTTPConnectionPool(host='pinot-controller', port=9000): Max retries exceeded with url: /schemas (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f55ff7232b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2025-03-20T20:55:24.608+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/connection.py", line 95, in create_connection
+    raise err
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 714, in urlopen
+    httplib_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 415, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connection.py", line 244, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.8/http/client.py", line 1256, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.8/http/client.py", line 1302, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.8/http/client.py", line 1251, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.8/http/client.py", line 1011, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.8/http/client.py", line 951, in send
+    self.connect()
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f55ff7232b0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 798, in urlopen
+    retries = retries.increment(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='pinot-controller', port=9000): Max retries exceeded with url: /schemas (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f55ff7232b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/airflow/plugins/pinot_schema_operator.py", line 24, in execute
+    response = requests.post(self.pinot_url, headers=headers, data=schema_data)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='pinot-controller', port=9000): Max retries exceeded with url: /schemas (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f55ff7232b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2025-03-20T20:55:31.109+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=schema_dag, task_id=submit_schemas, execution_date=20250319T000000, start_date=20250320T205515, end_date=20250320T205531
+[2025-03-20T20:55:32.651+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 19 for task submit_schemas (HTTPConnectionPool(host='pinot-controller', port=9000): Max retries exceeded with url: /schemas (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f55ff7232b0>: Failed to establish a new connection: [Errno 111] Connection refused')); 5519)
+[2025-03-20T20:55:32.701+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-03-20T20:55:32.845+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

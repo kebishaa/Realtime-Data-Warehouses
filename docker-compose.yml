@@ -1,0 +1,255 @@
+
+volumes:
+  postgres-db-volume: {}
+
+x-airflow-common:
+  &airflow-common
+  image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.7.1}
+  environment:
+    &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    AIRFLOW__CORE__FERNET_KEY: ''
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
+    AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: 30
+    AIRFLOW__SMTP__SMTP_HOST: 'smtp.gmail.com'
+    AIRFLOW__SMTP__SMTP_MAIL_FROM: 'sample_email@my_email.com'
+    AIRFLOW__SMTP__SMTP_USER: 'sample_email@my_email.com'
+    AIRFLOW__SMTP__SMTP_PASSWORD: 'your_password'
+    AIRFLOW__SMTP__SMTP_PORT: '587'
+    _PIP_ADDITIONAL_REQUIREMENTS: ${PIP_ADDITIONAL_REQUIREMENTS:-}
+  volumes:
+    - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
+    - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
+    - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
+    - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
+  user: "${AIRFLOW_UID:-50000}:0"
+  depends_on:
+    postgres:
+      condition: service_healthy
+  networks:
+    - kebishaa
+
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    hostname: zookeeper
+    container_name: zookeeper
+    restart: unless-stopped
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    healthcheck:
+      test: ["CMD", "bash", "-c", "echo 'ruok' | nc localhost 2181"]
+      interval: 10s
+      timeout: 5s
+    networks:
+      - kebishaa
+
+
+  kafka_broker:
+    image: docker.redpanda.com/redpandadata/redpanda:v24.1.1
+    restart: unless-stopped
+    command: >
+      redpanda start
+      --smp 1
+      --overprovisioned
+      --node-id 0
+      --kafka-addr internal://0.0.0.0:9092,external://0.0.0.0:19092
+      --advertise-kafka-addr internal://kafka-broker:9092,external://localhost:19092
+      --schema-registry-addr internal://0.0.0.0:8081,external://0.0.0.0:18081
+      --rpc-addr kafka_broker:33145
+      --advertise-rpc-addr kafka_broker:33145
+      --mode dev-container
+      --set auto_create_topics_enabled=true
+    ports:
+      - "18081:18081"
+      - "18082:18082"
+      - "19092:19092"
+      - "19644:19644"
+    networks:
+      - kebishaa
+
+  console:
+      image: docker.redpanda.com/redpandadata/console:v2.5.2
+      restart: unless-stopped
+      entrypoint: /bin/sh
+      command: |-
+        -c 'echo "$$CONSOLE_CONFIG_FILE" > /tmp/config.yml; /app/console'
+      depends_on:
+        - kafka_broker
+      ports:
+        - "8080:8080"
+      environment:
+        CONFIG_FILEPATH: /tmp/config.yml
+        CONSOLE_CONFIG_FILE: |
+          kafka:
+            brokers: ["kafka_broker:9092"]
+          schemaRegistry:
+            enabled: true
+            urls: ["http://kafka_broker:8081"]
+          redpanda:
+            adminApi:
+              enabled: true
+              urls: ["http://kafka_broker:9644"]
+          connect:
+            enabled: true
+            clusters:
+              - name: local-connect-cluster
+                url: http://connect:8083
+      networks:
+        - kebishaa
+
+
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 10s
+      retries: 5
+      start_period: 5s
+    networks:
+      - kebishaa
+
+  airflow-webserver:
+    <<: *airflow-common
+    command: webserver
+    container_name: airflow-webserver
+    ports:
+      - "8180:8080"
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    networks:
+      - kebishaa
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    container_name: airflow-scheduler
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    networks:
+      - kebishaa
+
+  airflow-init:
+    <<: *airflow-common
+    container_name: airflow-init
+    entrypoint: [ "bash", "-c", "exec airflow db init" ]  # Replace initdb with db init
+    command: >
+      bash -c "
+      function ver() {
+        printf '%04d%04d%04d%04d' $$1;
+      }
+      airflow_version=$$(AIRFLOW__LOGGING_LOGGING_LEVEL=INFO && gosu airflow version)
+      echo 'Airflow version:' $$airflow_version
+      "
+    user: "airflow"
+
+    environment:
+      <<: *airflow-common-env
+      _AIRFLOW_DB_MIGRATE: 'true'
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
+      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
+    volumes:
+      - ${AIRFLOW_PROJ_DIR:-.}:/sources
+    networks:
+      - kebishaa
+
+  airflow-cli:
+    <<: *airflow-common
+    profiles:
+      - debug
+    container_name: airflow-cli
+    environment:
+      <<: *airflow-common-env
+      CONNECTION_CHECK_MAX_COUNT: "0"
+    command:
+      - bash
+      - -c
+      - airflow
+    networks:
+      - kebishaa
+
+  pinot-controller:
+    image: apachepinot/pinot:1.2.0
+    command: "StartController zkAddress zookeeper:2181"
+    container_name: pinot-controller
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    environment:
+      JAVA_OPTS: "-Dplugins.dir=/opt/pinot/plugins -Xms1G -Xmx1G -XX:+UseG1GC -XX:MaxGCPauseMillis=20"
+    depends_on:
+      - zookeeper
+    networks:
+      - kebishaa
+
+  pinot-broker:
+    image: apachepinot/pinot:1.2.0
+    command: "StartBroker -zkAddress zookeeper:2181"
+    restart: unless-stopped
+    container_name: "pinot-broker"
+    ports:
+      - "8099:8099"
+    environment:
+      JAVA_OPTS: "-Dplugins.dir=/opt/pinot/plugins -Xms1G -Xmx1G -XX:+UseG1GC -XX:MaxGCPauseMillis=20"
+    depends_on:
+      - pinot-controller
+    networks:
+      - kebishaa
+
+  pinot-server:
+    image: apachepinot/pinot:1.2.0
+    command: "StartServer -zkAddress zookeeper:2181"
+    restart: unless-stopped
+    container_name: "pinot-server"
+    ports:
+      - "8098:8098"
+
+    environment:
+      JAVA_OPTS: "-Dplugins.dir=/opt/pinot/plugins -Xms1G -Xmx1G -XX:UseG1GC -XX:MaxGCPauseMillis=20"
+    depends_on:
+      - pinot-broker
+    networks:
+      - kebishaa
+
+
+  superset:
+    build:
+      context: ./superset
+      dockerfile: Dockerfile
+    container_name: superset
+    restart: unless-stopped
+    environment:
+      - ADMIN_USERNAME=admin
+      - ADMIN_EMAIL=admin@superset.com
+      - ADMIN_PASSWORD=admin
+
+    ports:
+      - '8088:8088'
+    networks:
+      - kebishaa
+networks:
+  kebishaa:
+    driver: bridge
