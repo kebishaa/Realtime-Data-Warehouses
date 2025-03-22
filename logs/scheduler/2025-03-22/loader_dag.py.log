@@ -1,0 +1,63 @@
+[2025-03-22T06:33:11.142+0000] {processor.py:157} INFO - Started process (PID=162) to work on /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:33:11.145+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/loader_dag.py for tasks to queue
+[2025-03-22T06:33:11.152+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:33:11.147+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:33:11.557+0000] {processor.py:839} INFO - DAG(s) dict_keys(['dimension_batch_ingestion']) retrieved from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:33:12.361+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:33:12.361+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:33:12.903+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:33:12.902+0000] {dag.py:3696} INFO - Setting next_dagrun for dimension_batch_ingestion to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:33:13.267+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/loader_dag.py took 2.138 seconds
+[2025-03-22T06:35:04.295+0000] {processor.py:157} INFO - Started process (PID=219) to work on /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:35:04.307+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/loader_dag.py for tasks to queue
+[2025-03-22T06:35:04.333+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:04.329+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:35:06.054+0000] {processor.py:839} INFO - DAG(s) dict_keys(['dimension_batch_ingestion']) retrieved from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:35:06.599+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:06.598+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:35:06.662+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:06.662+0000] {dag.py:3696} INFO - Setting next_dagrun for dimension_batch_ingestion to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:35:07.041+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/loader_dag.py took 2.820 seconds
+[2025-03-22T06:35:37.650+0000] {processor.py:157} INFO - Started process (PID=265) to work on /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:35:37.654+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/loader_dag.py for tasks to queue
+[2025-03-22T06:35:37.658+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:37.657+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:35:37.705+0000] {processor.py:839} INFO - DAG(s) dict_keys(['dimension_batch_ingestion']) retrieved from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:35:37.798+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:37.797+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:35:37.943+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:37.943+0000] {dag.py:3696} INFO - Setting next_dagrun for dimension_batch_ingestion to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:35:38.210+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/loader_dag.py took 0.569 seconds
+[2025-03-22T06:36:08.549+0000] {processor.py:157} INFO - Started process (PID=305) to work on /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:36:08.581+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/loader_dag.py for tasks to queue
+[2025-03-22T06:36:08.585+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:08.584+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:36:08.628+0000] {processor.py:839} INFO - DAG(s) dict_keys(['dimension_batch_ingestion']) retrieved from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:36:08.687+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:08.687+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:36:08.749+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:08.749+0000] {dag.py:3696} INFO - Setting next_dagrun for dimension_batch_ingestion to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:36:08.955+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/loader_dag.py took 0.414 seconds
+[2025-03-22T06:36:40.229+0000] {processor.py:157} INFO - Started process (PID=333) to work on /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:36:40.245+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/loader_dag.py for tasks to queue
+[2025-03-22T06:36:40.343+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:40.323+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:36:41.777+0000] {processor.py:839} INFO - DAG(s) dict_keys(['dimension_batch_ingestion']) retrieved from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:36:43.093+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:43.090+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:36:43.730+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:43.726+0000] {dag.py:3696} INFO - Setting next_dagrun for dimension_batch_ingestion to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:36:44.145+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/loader_dag.py took 4.174 seconds
+[2025-03-22T06:37:15.727+0000] {processor.py:157} INFO - Started process (PID=373) to work on /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:37:15.733+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/loader_dag.py for tasks to queue
+[2025-03-22T06:37:16.129+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:37:15.741+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:37:19.224+0000] {processor.py:839} INFO - DAG(s) dict_keys(['dimension_batch_ingestion']) retrieved from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:37:20.595+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:37:20.595+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:37:21.478+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:37:21.477+0000] {dag.py:3696} INFO - Setting next_dagrun for dimension_batch_ingestion to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:37:58.982+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/loader_dag.py took 44.133 seconds
+[2025-03-22T06:38:32.677+0000] {processor.py:157} INFO - Started process (PID=413) to work on /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:38:32.695+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/loader_dag.py for tasks to queue
+[2025-03-22T06:38:32.729+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:38:32.708+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:38:33.005+0000] {processor.py:839} INFO - DAG(s) dict_keys(['dimension_batch_ingestion']) retrieved from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:38:33.776+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:38:33.775+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:38:34.485+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:38:34.484+0000] {dag.py:3696} INFO - Setting next_dagrun for dimension_batch_ingestion to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:38:34.946+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/loader_dag.py took 2.599 seconds
+[2025-03-22T06:39:05.925+0000] {processor.py:157} INFO - Started process (PID=453) to work on /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:39:05.928+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/loader_dag.py for tasks to queue
+[2025-03-22T06:39:05.933+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:39:05.933+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:39:05.989+0000] {processor.py:839} INFO - DAG(s) dict_keys(['dimension_batch_ingestion']) retrieved from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:39:06.082+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:39:06.082+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:39:06.159+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:39:06.158+0000] {dag.py:3696} INFO - Setting next_dagrun for dimension_batch_ingestion to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:39:06.281+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/loader_dag.py took 0.367 seconds
+[2025-03-22T06:39:36.531+0000] {processor.py:157} INFO - Started process (PID=480) to work on /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:39:36.532+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/loader_dag.py for tasks to queue
+[2025-03-22T06:39:36.534+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:39:36.534+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:39:36.588+0000] {processor.py:839} INFO - DAG(s) dict_keys(['dimension_batch_ingestion']) retrieved from /opt/airflow/dags/loader_dag.py
+[2025-03-22T06:39:36.640+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:39:36.640+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:39:36.697+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:39:36.697+0000] {dag.py:3696} INFO - Setting next_dagrun for dimension_batch_ingestion to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:39:36.955+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/loader_dag.py took 0.431 seconds

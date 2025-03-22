@@ -1,0 +1,56 @@
+[2025-03-22T06:33:13.380+0000] {processor.py:157} INFO - Started process (PID=170) to work on /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:33:13.382+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/schema_dag.py for tasks to queue
+[2025-03-22T06:33:13.385+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:33:13.384+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:33:38.434+0000] {processor.py:839} INFO - DAG(s) dict_keys(['schema_dag']) retrieved from /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:33:40.480+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:33:40.474+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:33:41.572+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:33:41.572+0000] {dag.py:3696} INFO - Setting next_dagrun for schema_dag to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:35:07.082+0000] {processor.py:157} INFO - Started process (PID=230) to work on /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:35:07.084+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/schema_dag.py for tasks to queue
+[2025-03-22T06:35:07.087+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:07.086+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:35:08.277+0000] {processor.py:839} INFO - DAG(s) dict_keys(['schema_dag']) retrieved from /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:35:10.626+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:10.625+0000] {security.py:708} INFO - Not syncing DAG-level permissions for DAG 'DAG:schema_dag' as access control is unset.
+[2025-03-22T06:35:10.630+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:10.629+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:35:10.667+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:10.666+0000] {dag.py:3696} INFO - Setting next_dagrun for schema_dag to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:35:11.264+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/schema_dag.py took 4.189 seconds
+[2025-03-22T06:35:41.496+0000] {processor.py:157} INFO - Started process (PID=273) to work on /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:35:41.499+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/schema_dag.py for tasks to queue
+[2025-03-22T06:35:41.502+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:41.502+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:35:42.135+0000] {processor.py:839} INFO - DAG(s) dict_keys(['schema_dag']) retrieved from /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:35:42.214+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:42.213+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:35:42.262+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:42.261+0000] {dag.py:3696} INFO - Setting next_dagrun for schema_dag to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:35:42.718+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/schema_dag.py took 1.236 seconds
+[2025-03-22T06:36:13.098+0000] {processor.py:157} INFO - Started process (PID=314) to work on /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:36:13.100+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/schema_dag.py for tasks to queue
+[2025-03-22T06:36:13.106+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:13.106+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:36:14.692+0000] {processor.py:839} INFO - DAG(s) dict_keys(['schema_dag']) retrieved from /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:36:15.201+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:15.198+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:36:15.369+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:15.368+0000] {dag.py:3696} INFO - Setting next_dagrun for schema_dag to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:36:15.597+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/schema_dag.py took 2.508 seconds
+[2025-03-22T06:36:46.377+0000] {processor.py:157} INFO - Started process (PID=353) to work on /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:36:46.381+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/schema_dag.py for tasks to queue
+[2025-03-22T06:36:46.388+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:46.387+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:36:47.198+0000] {processor.py:839} INFO - DAG(s) dict_keys(['schema_dag']) retrieved from /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:36:47.291+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:47.291+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:36:47.375+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:47.375+0000] {dag.py:3696} INFO - Setting next_dagrun for schema_dag to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:36:47.482+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/schema_dag.py took 1.117 seconds
+[2025-03-22T06:38:18.500+0000] {processor.py:157} INFO - Started process (PID=396) to work on /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:38:18.503+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/schema_dag.py for tasks to queue
+[2025-03-22T06:38:18.505+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:38:18.504+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:38:20.068+0000] {processor.py:839} INFO - DAG(s) dict_keys(['schema_dag']) retrieved from /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:38:20.850+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:38:20.849+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:38:20.915+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:38:20.914+0000] {dag.py:3696} INFO - Setting next_dagrun for schema_dag to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:38:21.154+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/schema_dag.py took 2.664 seconds
+[2025-03-22T06:39:03.144+0000] {processor.py:157} INFO - Started process (PID=436) to work on /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:39:03.146+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/schema_dag.py for tasks to queue
+[2025-03-22T06:39:03.148+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:39:03.148+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:39:04.032+0000] {processor.py:839} INFO - DAG(s) dict_keys(['schema_dag']) retrieved from /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:39:04.105+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:39:04.104+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:39:04.159+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:39:04.159+0000] {dag.py:3696} INFO - Setting next_dagrun for schema_dag to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:39:04.245+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/schema_dag.py took 1.110 seconds
+[2025-03-22T06:39:35.883+0000] {processor.py:157} INFO - Started process (PID=476) to work on /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:39:35.886+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/schema_dag.py for tasks to queue
+[2025-03-22T06:39:35.889+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:39:35.887+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:39:36.771+0000] {processor.py:839} INFO - DAG(s) dict_keys(['schema_dag']) retrieved from /opt/airflow/dags/schema_dag.py
+[2025-03-22T06:39:36.812+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:39:36.811+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:39:36.848+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:39:36.848+0000] {dag.py:3696} INFO - Setting next_dagrun for schema_dag to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:39:37.125+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/schema_dag.py took 1.253 seconds

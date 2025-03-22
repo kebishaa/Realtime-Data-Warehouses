@@ -1,0 +1,76 @@
+[2025-03-22T06:34:33.752+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: table_dag.submit_tables scheduled__2025-03-21T00:00:00+00:00 [queued]>
+[2025-03-22T06:34:33.778+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: table_dag.submit_tables scheduled__2025-03-21T00:00:00+00:00 [queued]>
+[2025-03-22T06:34:33.779+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2025-03-22T06:34:37.573+0000] {taskinstance.py:1380} INFO - Executing <Task(PinotTableSubmitOperator): submit_tables> on 2025-03-21 00:00:00+00:00
+[2025-03-22T06:34:37.598+0000] {standard_task_runner.py:57} INFO - Started process 206 to run task
+[2025-03-22T06:34:37.810+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'table_dag', 'submit_tables', 'scheduled__2025-03-21T00:00:00+00:00', '--job-id', '42', '--raw', '--subdir', 'DAGS_FOLDER/table_dag.py', '--cfg-path', '/tmp/tmp04hyjm94']
+[2025-03-22T06:34:37.931+0000] {standard_task_runner.py:85} INFO - Job 42: Subtask submit_tables
+[2025-03-22T06:35:03.509+0000] {task_command.py:415} INFO - Running <TaskInstance: table_dag.submit_tables scheduled__2025-03-21T00:00:00+00:00 [running]> on host c601b8b43588
+[2025-03-22T06:35:05.101+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='kebishaa' AIRFLOW_CTX_DAG_ID='table_dag' AIRFLOW_CTX_TASK_ID='submit_tables' AIRFLOW_CTX_EXECUTION_DATE='2025-03-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-21T00:00:00+00:00'
+[2025-03-22T06:35:08.287+0000] {pinot_table_operator.py:34} ERROR - An error occurred: HTTPConnectionPool(host='pinot-controller', port=9000): Max retries exceeded with url: /tables (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fe7267ce430>: Failed to establish a new connection: [Errno 113] No route to host'))
+[2025-03-22T06:35:08.290+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/connection.py", line 95, in create_connection
+    raise err
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+OSError: [Errno 113] No route to host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 714, in urlopen
+    httplib_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 415, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connection.py", line 244, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.8/http/client.py", line 1256, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.8/http/client.py", line 1302, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.8/http/client.py", line 1251, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.8/http/client.py", line 1011, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.8/http/client.py", line 951, in send
+    self.connect()
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7fe7267ce430>: Failed to establish a new connection: [Errno 113] No route to host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 798, in urlopen
+    retries = retries.increment(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='pinot-controller', port=9000): Max retries exceeded with url: /tables (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fe7267ce430>: Failed to establish a new connection: [Errno 113] No route to host'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/airflow/plugins/pinot_table_operator.py", line 26, in execute
+    response = requests.post(self.pinot_url, headers=headers, data=table_data)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='pinot-controller', port=9000): Max retries exceeded with url: /tables (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fe7267ce430>: Failed to establish a new connection: [Errno 113] No route to host'))
+[2025-03-22T06:35:09.617+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=table_dag, task_id=submit_tables, execution_date=20250321T000000, start_date=20250322T063433, end_date=20250322T063509
+[2025-03-22T06:35:09.925+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 42 for task submit_tables (HTTPConnectionPool(host='pinot-controller', port=9000): Max retries exceeded with url: /tables (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fe7267ce430>: Failed to establish a new connection: [Errno 113] No route to host')); 206)
+[2025-03-22T06:35:09.989+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-03-22T06:35:10.041+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

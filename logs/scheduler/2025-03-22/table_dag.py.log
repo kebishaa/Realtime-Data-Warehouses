@@ -1,0 +1,56 @@
+[2025-03-22T06:33:11.212+0000] {processor.py:157} INFO - Started process (PID=165) to work on /opt/airflow/dags/table_dag.py
+[2025-03-22T06:33:11.218+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/table_dag.py for tasks to queue
+[2025-03-22T06:33:11.220+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:33:11.219+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/table_dag.py
+[2025-03-22T06:33:38.435+0000] {processor.py:839} INFO - DAG(s) dict_keys(['table_dag']) retrieved from /opt/airflow/dags/table_dag.py
+[2025-03-22T06:33:41.140+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:33:41.137+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:33:41.584+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:33:41.583+0000] {dag.py:3696} INFO - Setting next_dagrun for table_dag to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:35:04.342+0000] {processor.py:157} INFO - Started process (PID=222) to work on /opt/airflow/dags/table_dag.py
+[2025-03-22T06:35:04.345+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/table_dag.py for tasks to queue
+[2025-03-22T06:35:04.351+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:04.349+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/table_dag.py
+[2025-03-22T06:35:08.277+0000] {processor.py:839} INFO - DAG(s) dict_keys(['table_dag']) retrieved from /opt/airflow/dags/table_dag.py
+[2025-03-22T06:35:10.629+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:10.627+0000] {security.py:708} INFO - Not syncing DAG-level permissions for DAG 'DAG:table_dag' as access control is unset.
+[2025-03-22T06:35:10.631+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:10.629+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:35:10.666+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:10.666+0000] {dag.py:3696} INFO - Setting next_dagrun for table_dag to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:35:11.149+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/table_dag.py took 6.823 seconds
+[2025-03-22T06:35:41.478+0000] {processor.py:157} INFO - Started process (PID=270) to work on /opt/airflow/dags/table_dag.py
+[2025-03-22T06:35:41.482+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/table_dag.py for tasks to queue
+[2025-03-22T06:35:41.487+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:41.486+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/table_dag.py
+[2025-03-22T06:35:42.092+0000] {processor.py:839} INFO - DAG(s) dict_keys(['table_dag']) retrieved from /opt/airflow/dags/table_dag.py
+[2025-03-22T06:35:42.165+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:42.160+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:35:42.223+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:35:42.223+0000] {dag.py:3696} INFO - Setting next_dagrun for table_dag to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:35:42.477+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/table_dag.py took 1.013 seconds
+[2025-03-22T06:36:12.668+0000] {processor.py:157} INFO - Started process (PID=310) to work on /opt/airflow/dags/table_dag.py
+[2025-03-22T06:36:12.672+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/table_dag.py for tasks to queue
+[2025-03-22T06:36:12.683+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:12.681+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/table_dag.py
+[2025-03-22T06:36:14.354+0000] {processor.py:839} INFO - DAG(s) dict_keys(['table_dag']) retrieved from /opt/airflow/dags/table_dag.py
+[2025-03-22T06:36:14.629+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:14.623+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:36:14.821+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:14.818+0000] {dag.py:3696} INFO - Setting next_dagrun for table_dag to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:36:15.107+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/table_dag.py took 2.449 seconds
+[2025-03-22T06:36:46.251+0000] {processor.py:157} INFO - Started process (PID=350) to work on /opt/airflow/dags/table_dag.py
+[2025-03-22T06:36:46.262+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/table_dag.py for tasks to queue
+[2025-03-22T06:36:46.268+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:46.266+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/table_dag.py
+[2025-03-22T06:36:47.157+0000] {processor.py:839} INFO - DAG(s) dict_keys(['table_dag']) retrieved from /opt/airflow/dags/table_dag.py
+[2025-03-22T06:36:47.250+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:47.248+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:36:47.320+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:36:47.320+0000] {dag.py:3696} INFO - Setting next_dagrun for table_dag to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:36:47.392+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/table_dag.py took 1.166 seconds
+[2025-03-22T06:38:02.056+0000] {processor.py:157} INFO - Started process (PID=387) to work on /opt/airflow/dags/table_dag.py
+[2025-03-22T06:38:02.058+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/table_dag.py for tasks to queue
+[2025-03-22T06:38:02.061+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:38:02.061+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/table_dag.py
+[2025-03-22T06:38:08.171+0000] {processor.py:839} INFO - DAG(s) dict_keys(['table_dag']) retrieved from /opt/airflow/dags/table_dag.py
+[2025-03-22T06:38:11.341+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:38:11.337+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:38:11.581+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:38:11.580+0000] {dag.py:3696} INFO - Setting next_dagrun for table_dag to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:38:17.365+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/table_dag.py took 15.317 seconds
+[2025-03-22T06:38:48.451+0000] {processor.py:157} INFO - Started process (PID=424) to work on /opt/airflow/dags/table_dag.py
+[2025-03-22T06:38:48.456+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/table_dag.py for tasks to queue
+[2025-03-22T06:38:48.464+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:38:48.460+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/table_dag.py
+[2025-03-22T06:38:52.417+0000] {processor.py:839} INFO - DAG(s) dict_keys(['table_dag']) retrieved from /opt/airflow/dags/table_dag.py
+[2025-03-22T06:38:58.630+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:38:58.626+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:38:59.870+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:38:59.869+0000] {dag.py:3696} INFO - Setting next_dagrun for table_dag to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:39:03.016+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/table_dag.py took 14.594 seconds
+[2025-03-22T06:39:33.320+0000] {processor.py:157} INFO - Started process (PID=464) to work on /opt/airflow/dags/table_dag.py
+[2025-03-22T06:39:33.322+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/table_dag.py for tasks to queue
+[2025-03-22T06:39:33.328+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:39:33.324+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/table_dag.py
+[2025-03-22T06:39:34.536+0000] {processor.py:839} INFO - DAG(s) dict_keys(['table_dag']) retrieved from /opt/airflow/dags/table_dag.py
+[2025-03-22T06:39:34.631+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:39:34.630+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-03-22T06:39:34.684+0000] {logging_mixin.py:151} INFO - [2025-03-22T06:39:34.684+0000] {dag.py:3696} INFO - Setting next_dagrun for table_dag to 2025-03-22T00:00:00+00:00, run_after=2025-03-23T00:00:00+00:00
+[2025-03-22T06:39:35.819+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/table_dag.py took 2.577 seconds
