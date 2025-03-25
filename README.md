@@ -16,12 +16,17 @@ Key tasks of the Project
 ● Dimensional Modeling – Applied dimensional modeling techniques for improved data organization and reporting.
 
 
-# Tech-stack A
+# Tech-stack 
 ● Apache Airflow
+
 ● Kafka
+
 ● Redpanda
+
 ● pinot
+
 ● Superset
+
 ● PostgreSQL
 ![Architecture](https://github.com/kebishaa/Realtime-Data-Warehouses/blob/main/images/Capture1.PNG?raw=true)!
 
