@@ -151,18 +151,59 @@ services:
     networks:
       - kebishaa
 
-  airflow-init:
+    airflow-init:
     <<: *airflow-common
     container_name: airflow-init
-    entrypoint: [ "bash", "-c", "exec airflow db init" ]  # Replace initdb with db init
+    entrypoint: [ "bash", "-c", "exec airflow db init" ]
     command: >
-      bash -c "
-      function ver() {
-        printf '%04d%04d%04d%04d' $$1;
-      }
-      airflow_version=$$(AIRFLOW__LOGGING_LOGGING_LEVEL=INFO && gosu airflow version)
-      echo 'Airflow version:' $$airflow_version
-      "
+      -c 
+      - |
+        function ver() {
+          printf '%04d%04d%04d%04d' $${1//./ }
+        }
+        
+        airflow_version=$$(AIRFLOW__LOGGING_LOGGING_LEVEL=INFO gosu airflow version)
+        airflow_version_comparable=$$(ver $${airflow_version})
+        min_airflow_version="2.2.0"
+        min_airflow_version_comparable=$$(ver $${min_airflow_version})
+
+        if (( airflow_version_comparable < min_airflow_version_comparable )); then
+          echo -e "\033[1;31mERROR!!!: Too old Airflow version $${airflow_version}!\e[0m"
+          echo "Minimum supported version: $${min_airflow_version}. Please upgrade."
+          exit 1
+        fi 
+
+        if [[ -z "${AIRFLOW_UID}" ]]; then
+          echo -e "\033[1;33mWARNING!!!: AIRFLOW_UID not set!\033[0m"
+          echo "If you're on Linux, set AIRFLOW_UID to avoid permission issues."
+        fi
+
+        one_meg=1048576
+        mem_available=$$(($$(getconf _PHYS_PAGES) * $$(getconf PAGE_SIZE) / one_meg))
+        cpus_available=$$(grep -c 'processor' /proc/cpuinfo)
+        disk_available=$$(df / | tail -1 | awk '{print $$4}')
+        warning_resources="false"
+
+        if (( mem_available < 4000 )); then
+          echo -e "\033[1;33mWARNING!!!: Low memory! At least 4GB required.\e[0m"
+          warning_resources="true"
+        fi
+        if (( cpus_available < 2 )); then
+          echo -e "\033[1;33mWARNING!!!: Not enough CPUs! At least 2 required.\e[0m"
+          warning_resources="true"
+        fi
+        if (( disk_available < 10485760 )); then
+          echo -e "\033[1;33mWARNING!!!: Low disk space! At least 10GB recommended.\e[0m"
+          warning_resources="true"
+        fi
+        if [[ $${warning_resources} == "true" ]]; then
+          echo "See: https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html"
+        fi
+
+        mkdir -p /sources/logs /sources/dags /sources/plugins
+        chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
+        exec /entrypoint airflow version
+        
     user: "airflow"
 
     environment:
@@ -171,6 +212,7 @@ services:
       _AIRFLOW_WWW_USER_CREATE: 'true'
       _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
       _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
+      _PIP_ADDITIONAL_REQUIREMENTS: ""
     volumes:
       - ${AIRFLOW_PROJ_DIR:-.}:/sources
     networks:
@@ -189,7 +231,7 @@ services:
       - -c
       - airflow
     networks:
-      - kebishaa
+      - "kebishaa"
 
   pinot-controller:
     image: apachepinot/pinot:1.2.0
