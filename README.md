@@ -12,6 +12,7 @@ Key Learnings from My Project
 ✅ Batch & Streaming Data Ingestion – Enabled real-time analytics by efficiently ingesting batch and streaming data into Apache Pinot.
 
 ✅ Dynamic Data Visualization – Built interactive dashboards with Apache Superset to visualize evolving data in real time.
+
 ✅ Dimensional Modeling – Applied dimensional modeling techniques for improved data organization and reporting.
 
 ![Architecture](https://github.com/kebishaa/Realtime-Data-Warehouses/blob/main/images/Capture1.PNG?raw=true)!
